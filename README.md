@@ -17,6 +17,17 @@ yarn dev
 pnpm dev
 ```
 
+Make sure to add a `.env` file
+
+```dotenv
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=somesecret
+
+KEYCLOAK_ISSUER=http://localhost:8080/realms/<client-id>
+KEYCLOAK_SECRET=<client-secret>
+KEYCLOAK_ID=<client-id>
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
