@@ -9,17 +9,23 @@ export default async function Home() {
 
     const session = await getServerSession(authOptions);
 
-    const backend = "http://127.0.0.1:8090"
+    const backend = process.env.BACKEND_URL
 
     async function makeQuery(path: string) {
         try {
 
-            const resp = await fetch(backend + path)
-            const json = await resp.json()
-            JSON.stringify(json)
+            if (backend !== undefined) {
 
-            console.log(json)
-            return json
+                const resp = await fetch(backend + path)
+                const json = await resp.json()
+                JSON.stringify(json)
+
+                console.log(json)
+                return json
+            }
+
+            return {}
+
         } catch (e) {
             console.log("Failed: ", e)
             return {}
